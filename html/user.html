@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuario</title>
+    <link rel="stylesheet" href="../css/styles-user.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="user-container">
+        <header class="user-header">
+            <div class="header-content">
+                <h1>Lunch UIS - Usuario</h1>
+                <div class="user-info">
+                    <span>Hola, <span id="userName"></span></span>
+                    <button id="logoutBtn" class="logout-btn">Cerrar Sesión</button>
+                </div>
+            </div>
+        </header>
+
+        <nav class="user-nav">
+            <button class="nav-btn active" data-tab="combos">Combos Disponibles</button>
+            <button class="nav-btn" data-tab="carrito">Mi Carrito</button>
+            <button class="nav-btn" data-tab="historial">Mi Historial</button>
+        </nav>
+
+        <main class="user-main">
+            <!-- Sección Combos Disponibles -->
+            <div id="combos-tab" class="tab-content active">
+                <div class="section-header">
+                    <h2>Combos Disponibles</h2>
+                    <div class="carrito-info">
+                        <span id="carritoCount">0</span> items en carrito
+                    </div>
+                </div>
+                
+                <div id="combosDisponibles" class="combos-grid">
+                    <!-- Combos se cargarán aquí -->
+                </div>
+            </div>
+
+            <!-- Sección Carrito -->
+            <div id="carrito-tab" class="tab-content">
+                <div class="section-header">
+                    <h2>Mi Carrito de Compras</h2>
+                    <div class="carrito-total">
+                        Total: $<span id="carritoTotal">0</span>
+                    </div>
+                </div>
+                
+                <div id="carritoItems" class="carrito-container">
+                    <!-- Items del carrito se cargarán aquí -->
+                </div>
+                
+                <div class="carrito-actions">
+                    <button id="vaciarCarritoBtn" class="btn-secondary">Vaciar Carrito</button>
+                    <button id="confirmarPedidoBtn" class="btn-primary">Confirmar Pedido</button>
+                </div>
+            </div>
+
+            <!-- Sección Historial -->
+            <div id="historial-tab" class="tab-content">
+                <div class="section-header">
+                    <h2>Mi Historial de Pedidos</h2>
+                </div>
+                <div id="historialPedidos" class="historial-container">
+                    <!-- Historial se cargará aquí -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de confirmación de compra -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h3>Confirmar Pedido</h3>
+            <div id="confirmDetails">
+                <!-- Detalles del pedido se cargarán aquí -->
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-secondary" id="cancelConfirmBtn">Cancelar</button>
+                <button type="button" class="btn-primary" id="confirmPedidoBtn">Confirmar Compra</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin-data.js"></script>
+    <script src="../js/user-crud.js"></script>
+</body>
+</html>
