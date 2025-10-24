@@ -47,6 +47,12 @@ RNF4: Autenticación de dos factores (2FA)
 ## Estructura del Sistema
 Sistema modular con paneles separados para administradores y usuarios, gestión completa de combos, pedidos y autenticación integrada.  
 
+## Modelo de Base de Datos
+
+A continuación se muestra el diseño del modelo relacional utilizado en el sistema:  
+![Modelo de Base de Datos](./assets/base_datos.png)
+
+
 ## Equipo de Desarrollo
 | Rol                          | Nombre                                            |
 | ---------------------------- | ------------------------------------------------- |
