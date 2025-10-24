@@ -33,7 +33,7 @@ Sistema de gestión digital que permite:
 ### Arquitectura de Microservicios
 
 <div align="center">
-  <img src="docs/diagrams/ComponentDiagram.jpg" alt="Diagrama de Componentes" width="800"/>
+  <img src="doc/diagrams/ComponentDiagram.jpg" alt="Diagrama de Componentes" width="800"/>
   <p><em>Figura 1: Arquitectura de microservicios del sistema LunchUIS</em></p>
 </div>
 
