@@ -1,9 +1,10 @@
 # LunchUIS
+Sistema de Gestión de Combos – Universidad Industrial de Santander
 
 ## Introducción
 LunchUIS es un sistema web diseñado para la administración y compra de combos saludables en la Universidad Industrial de Santander (UIS). El proyecto busca digitalizar y optimizar el proceso de adquisición del “combo saludable”, ofreciendo una experiencia más rápida, segura y ecológica para estudiantes y administradores.  
 
-Desarrollado con HTML, CSS y JavaScript, el sistema ofrece autenticación por roles, gestión de combos y persistencia local de datos, junto con un diseño adaptable a diferentes dispositivos.
+Desarrollado con HTML5, CSS3, JavaScript Genérico, Spring Boot, Postgres, entre otros, el sistema ofrece autenticación por roles (Administrador/Usuario), gestión completa de combos, persistencia local y remota de datos, y un diseño responsive adaptable a diferentes dispositivos. Además, implementa comunicación mediante HTTPS, control de versiones con GitHub, y se gestiona bajo la metodología Scrum (Jira).
 
 ## Objetivo del Proyecto
 Desarrollar una plataforma web integral que permita:
@@ -14,7 +15,7 @@ Desarrollar una plataforma web integral que permita:
 - Mejorar la transparencia y eficiencia del proceso.
 
 ## Problemática
-Actualmente, los estudiantes deben hacer largas filas para adquirir el combo saludable, lo que genera pérdida de tiempo, riesgo de duplicación de compras con carnets ajenos y pérdida de tickets físicos. LunchUIS soluciona estos inconvenientes mediante una aplicación web con acceso autenticado y tickets digitales en forma de QR.
+Actualmente, los estudiantes deben hacer largas filas para adquirir el combo saludable, lo que genera pérdida de tiempo, riesgo de duplicación de compras con carnets ajenos y pérdida de tickets físicos. LunchUIS soluciona estos inconvenientes mediante una aplicación web con acceso autenticado y tickets digitales.
 
 ## Visión del Proyecto
 Modernizar la experiencia del servicio de alimentación en la UIS mediante una herramienta eficiente, segura y sostenible, que a futuro pueda escalarse para la gestión de otros servicios universitarios.
