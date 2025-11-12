@@ -1,10 +1,4 @@
-# LunchUIS Platform 🍽️
-
-[![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.5.6-6DB33F?style=for-the-badge&logo=spring-boot)](https://spring.io/projects/spring-boot)
-[![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+# LunchUIS 🍽️
 
 ## 📋 Descripción del Proyecto
 
@@ -49,14 +43,6 @@ El sistema implementa una **arquitectura orientada a microservicios** con los si
 | **Order Service** | 8083 | Procesamiento de pedidos | Schema `orders` |
 | **API Gateway (Kong)** | 8000/8080 | Enrutamiento y seguridad | - |
 
-#### 📊 Capa de Persistencia
-
-- **PostgreSQL**: Base de datos compartida con esquemas aislados por servicio
-- **Schemas separados**: `identity`, `combos`, `orders`
-- **JPA/Hibernate**: Mapeo objeto-relacional
-
----
-
 ## 🔐 Seguridad y Autenticación
 
 ### Flujo de Autenticación JWT
@@ -79,7 +65,7 @@ El sistema implementa una **arquitectura orientada a microservicios** con los si
 
 ---
 
-## 🚀 Requerimientos Funcionales (Sprint 1)
+## 🚀 Requerimientos Funcionales
 
 ### RF1: Ingresar al Sistema
 - **Actores**: Estudiante, Administrador
@@ -129,213 +115,6 @@ El sistema implementa una **arquitectura orientada a microservicios** con los si
 
 ---
 
-## 🛠️ Stack Tecnológico
-
-### Backend
-```yaml
-Lenguaje: Java 21
-Framework: Spring Boot 3.5.6
-Seguridad: Spring Security 6
-Persistencia: Spring Data JPA
-Validación: Jakarta Validation
-Mapeo: MapStruct 1.6.3
-Documentación: SpringDoc OpenAPI 3
-```
-
-### Infraestructura
-```yaml
-Base de Datos: PostgreSQL 17
-Contenedores: Docker + Docker Compose
-Gateway: Kong API Gateway
-Config: Spring Cloud Config Server
-Build: Maven 3.9
-```
-
-### Librerías Clave
-- **JWT**: `jjwt` 0.13.0 (io.jsonwebtoken)
-- **Lombok**: Reducción de boilerplate
-- **Logback**: Logging estructurado
-
----
-
-## 📦 Estructura del Proyecto
-```
-lunchuis-platform/
-├── common-library/          # DTOs, excepciones, mappers compartidos
-│   ├── dto/
-│   ├── enums/              # ComboStatus, ComboType, RoleType
-│   ├── exception/          # DomainException, GlobalExceptionHandler
-│   └── mapper/
-├── config-server/          # Configuración centralizada (8888)
-│   └── src/main/resources/config/
-├── identity-server/        # Autenticación y usuarios (8081)
-│   ├── application/        # DTOs, servicios, mappers
-│   ├── domain/            # User, Role (modelos)
-│   ├── infrastructure/    # JPA, seguridad, persistencia
-│   └── web/               # Controllers REST
-├── combo-server/          # Gestión de combos (8082)
-│   ├── application/
-│   ├── domain/            # Combo (modelo)
-│   ├── infrastructure/
-│   └── web/
-├── order-server/          # Pedidos (8083) [En desarrollo]
-└── docker-compose.yml     # Orquestación de servicios
-```
-
----
-
-## 🚦 Guía de Inicio Rápido
-
-### Prerrequisitos
-- Java 21+
-- Docker & Docker Compose
-- Maven 3.9+
-- PostgreSQL 17 (opcional, incluido en Docker)
-
-### Instalación
-
-1. **Clonar el repositorio**
-```bash
-git clone https://github.com/SebAs-man/LunchUIS.git
-cd LunchUIS
-```
-
-2. **Configurar variables de entorno**
-```bash
-# Crear archivo .env en la raíz
-DB_USERNAME=lunchuis_user
-DB_PASSWORD=secure_password_123
-DB_NAME=lunchuis_db
-DB_PORT=5432
-JWT_SECRET=your-256-bit-secret-key-base64-encoded
-JWT_EXPIRATION=86400000  # 24 horas en ms
-```
-
-3. **Iniciar servicios con Docker**
-```bash
-docker-compose up -d
-```
-
-4. **Verificar estado de los servicios**
-```bash
-# Config Server
-curl http://localhost:8888/actuator/health
-
-# Identity Service
-curl http://localhost:8081/actuator/health
-
-# Combo Service
-curl http://localhost:8082/actuator/health
-```
-
-### Acceso a la Documentación API
-
-- **Identity Service**: http://localhost:8081/swagger-ui.html
-- **Combo Service**: http://localhost:8082/swagger-ui.html
-- **Config Server**: http://localhost:8888/actuator
-
----
-
-## 📝 Casos de Uso Principales
-
-### 1. Registro de Usuario
-```bash
-POST http://localhost:8081/api/v1/auth/register
-Content-Type: application/json
-
-{
-  "firstName": "Carlos",
-  "lastName": "Beltrán",
-  "institutionalCode": 2180001,
-  "email": "carlos.beltran@uis.edu.co",
-  "password": "SecureP@ss123"
-}
-```
-
-### 2. Login y Obtención de JWT
-```bash
-POST http://localhost:8081/api/v1/auth/login
-Content-Type: application/json
-
-{
-  "institutionalCode": 2180001,
-  "password": "SecureP@ss123"
-}
-
-# Respuesta
-{
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-}
-```
-
-### 3. Crear Combo (Admin)
-```bash
-POST http://localhost:8082/api/v1/combos
-Authorization: Bearer <JWT_TOKEN>
-Content-Type: application/json
-
-{
-  "name": "COMBO DIARIO NOVIEMBRE 01",
-  "description": "Pollo, arroz, ensalada, jugo",
-  "price": 8000.00,
-  "status": "AVAILABLE",
-  "type": "DAILY",
-  "totalQuota": 150,
-  "validFrom": "2025-11-01",
-  "validTo": null
-}
-```
-
-### 4. Listar Combos Disponibles
-```bash
-GET http://localhost:8082/api/v1/combos
-Authorization: Bearer <JWT_TOKEN>
-```
-
----
-
-## 🔄 Flujo de Datos: Compra de Combo
-```mermaid
-sequenceDiagram
-    participant U as Usuario
-    participant G as API Gateway
-    participant I as Identity Service
-    participant C as Combo Service
-    participant O as Order Service
-    participant DB as PostgreSQL
-
-    U->>G: POST /auth/login
-    G->>I: Validar credenciales
-    I->>DB: SELECT user WHERE code=?
-    DB-->>I: User data
-    I->>I: Generar JWT
-    I-->>G: JWT token
-    G-->>U: JWT token
-
-    U->>G: GET /combos (con JWT)
-    G->>C: Listar combos disponibles
-    C->>DB: SELECT * FROM combos WHERE status='AVAILABLE'
-    DB-->>C: Lista de combos
-    C-->>G: Combos disponibles
-    G-->>U: JSON combos
-
-    U->>G: POST /orders (con JWT)
-    G->>O: Crear orden
-    O->>I: Validar usuario
-    I-->>O: Usuario válido
-    O->>C: Reservar cuota
-    C->>DB: UPDATE combos SET availableQuota = availableQuota - 1
-    DB-->>C: OK
-    C-->>O: Cuota reservada
-    O->>DB: INSERT INTO orders
-    DB-->>O: Orden creada
-    O->>O: Generar QR
-    O-->>G: Orden + QR
-    G-->>U: Orden confirmada con QR
-```
-
----
-
 ## 👥 Equipo de Desarrollo
 
 | Rol | Nombre | Responsabilidad |
@@ -345,23 +124,6 @@ sequenceDiagram
 | **Developer Architecture** | Andrea Juliana Portilla Barrera | Diseño de arquitectura y patrones |
 | **Developer Coding** | Kevin Castro, Sebastián Mantilla, Andrea Portilla | Implementación backend |
 | **QA Member** | Juan Sebastián Mantilla Serrano | Pruebas y validación de calidad |
-
----
-
-## 📊 Métricas del Sistema
-
-### Sprint 1 (Actual)
-- ✅ Sistema de autenticación completo
-- ✅ Gestión CRUD de combos
-- ✅ Validación de roles y permisos
-- ✅ Documentación API con Swagger
-- ⏳ Integración de órdenes (en progreso)
-
-### Cobertura Técnica
-- **Microservicios**: 3/4 completados (75%)
-- **Endpoints implementados**: 15+
-- **Esquemas de BD**: 3/3 (identity, combos, orders)
-- **Tests**: Pendientes (próximo sprint)
 
 ---
 
