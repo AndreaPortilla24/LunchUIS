@@ -43,26 +43,6 @@ El sistema implementa una **arquitectura orientada a microservicios** con los si
 | **Order Service** | 8083 | Procesamiento de pedidos | Schema `orders` |
 | **API Gateway (Kong)** | 8000/8080 | Enrutamiento y seguridad | - |
 
-## 🔐 Seguridad y Autenticación
-
-### Flujo de Autenticación JWT
-```
-1. Usuario → POST /auth/login (código + contraseña)
-2. Identity Service → Valida credenciales
-3. Identity Service → Genera JWT firmado (HS256)
-4. Cliente → Recibe token (válido 24h)
-5. Cliente → Incluye token en header: Authorization: Bearer <token>
-6. Servicios → Validan JWT con clave compartida
-```
-
-### Características de Seguridad
-
-- ✅ **Stateless Authentication**: JWT sin sesiones del lado del servidor
-- ✅ **Role-Based Access Control (RBAC)**: Roles `STUDENT` y `ADMIN`
-- ✅ **Password Hashing**: BCrypt con salt automático
-- ✅ **2FA (Planeado)**: Código de verificación por correo institucional
-- ✅ **Protection Endpoints**: `@PreAuthorize("hasRole('ADMIN')")`
-
 ---
 
 ## 🚀 Requerimientos Funcionales
