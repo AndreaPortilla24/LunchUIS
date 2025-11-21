@@ -1,6 +1,16 @@
 # LunchUIS 🍽️
 
+
 Sistema automatizado para la gestión y compra del "Combo Saludable" en la Universidad Industrial de Santander.
+
+## Equipo de Desarrollo
+| Rol                          | Nombre                                            |
+| ---------------------------- | ------------------------------------------------- |
+| **Product Owner**            | Mag. Carlos Adolfo Beltrán Castro                 |
+| **Scrum Master**             | Kevin Daniel Castro Mendoza                       |
+| **Developer – Architecture** | Andrea Juliana Portilla Barrera                   |
+| **Developer – Coding**       | Kevin Castro, Sebastián Mantilla, Andrea Portilla |
+| **QA Member**                | Juan Sebastián Mantilla Serrano                   |
 
 ## 📖 Contexto del Proyecto
 **Problema:** Largas filas y tiempos de espera en el servicio de comedores presencial de la UIS.
