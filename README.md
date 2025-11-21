@@ -1,137 +1,18 @@
-# LunchUIS 🍽️
+# PROYECTO-LUNCH-UIS TESTCOMMIT
+En el presente repositorio se colocaran los archivos relacionados con el proyecto para el curso de ingeniería de software 2 en el semestre 2025-1.
 
-## 📋 Descripción del Proyecto
+# OBJETIVO GENERAL DEL PROYECTO
+Desarrollar una solución software en forma de página web y/o app móvil que automatice el proceso de compra del servicio de "combo saludable" de la Universidad Industrial de Santander, con el fin de mejorar la eficiencia y accesibilidad, reduciendo el tiempo de espera y los inconvenientes asociados al sistema presencial actual.
 
-**LunchUIS** es una plataforma web para la gestión automatizada de compra de "combos saludables" en la Universidad Industrial de Santander. El sistema elimina las largas filas presenciales, previene compras fraudulentas mediante autenticación robusta, y digitaliza el proceso de reclamación con tokens QR.
 
-### 🎯 Problemática
-
-- **Largas filas:** Los estudiantes pierden tiempo valioso esperando para comprar
-- **Inseguridad:** Posibilidad de compras múltiples con carnets ajenos
-- **Ineficiencia:** Tickets físicos generan desperdicio y pueden perderse
-- **Accesibilidad limitada:** Estudiantes que viven lejos pierden oportunidades
-
-### ✨ Solución
-
-Sistema de gestión digital que permite:
-- Compra online desde cualquier lugar
-- Autenticación de dos factores (JWT + correo institucional)
-- Generación de QR para reclamación sin contacto
-- Una compra por usuario por día
-- Disponibilidad 7am-8pm, lunes a viernes
-
----
-
-## 🏗️ Arquitectura del Sistema
-
-### Arquitectura de Microservicios
-
-<div align="center">
-  <img src="doc/diagrams/ComponentDiagram.jpg" alt="Diagrama de Componentes" width="800"/>
-  <p><em>Figura 1: Arquitectura de microservicios del sistema LunchUIS</em></p>
-</div>
-
-El sistema implementa una **arquitectura orientada a microservicios** con los siguientes componentes:
-
-#### 🔧 Componentes Principales
-
-| Microservicio | Puerto | Responsabilidad | Base de Datos |
-|--------------|--------|-----------------|---------------|
-| **Config Server** | 8888 | Configuración centralizada | - |
-| **Identity Service** | 8081 | Autenticación y autorización | Schema `identity` |
-| **Combo Service** | 8082 | Gestión de combos (CRUD) | Schema `combos` |
-| **Order Service** | 8083 | Procesamiento de pedidos | Schema `orders` |
-| **API Gateway (Kong)** | 8000/8080 | Enrutamiento y seguridad | - |
-
----
-
-## 🚀 Requerimientos Funcionales
-
-### RF1: Ingresar al Sistema
-- **Actores**: Estudiante, Administrador
-- **Entrada**: Código institucional + contraseña
-- **Validación**: Máximo 3 intentos fallidos → bloqueo 24h
-- **Salida**: JWT token de autenticación
-
-### RF2: Crear Combo (Admin)
-- **Actores**: Administrador de combos
-- **Entrada**: Nombre, descripción, precio, imagen, tipo (DAILY/MONTHLY), cuota, fecha validez
-- **Validación**: Todos los campos obligatorios
-- **Salida**: Combo disponible para compra
-
-### RF3: Modificar Combo (Admin)
-- **Actores**: Administrador de combos
-- **Validación**: Cuota total ≥ combos vendidos
-- **Salida**: Combo actualizado
-
-### RF4: Eliminar Combo (Admin)
-- **Restricción**: Solo si no hay órdenes asociadas
-- **Validación**: Confirmación requerida
-
----
-
-## ⚙️ Requerimientos No Funcionales
-
-### RNF1: Arquitectura de Microservicios
-- **Objetivo**: Modularidad, escalabilidad y facilidad de mantenimiento
-- **Implementación**: Servicios independientes con comunicación HTTP/REST
-- **Ventajas**: Despliegue independiente, resiliencia ante fallos
-
-### RNF2: Disponibilidad
-- **Horario**: 7:00 AM - 8:00 PM (13 horas), Lunes a Viernes
-- **SLA**: 99.96% uptime (máximo 30 min downtime/semana)
-- **Monitoreo**: Spring Boot Actuator + health checks
-
-### RNF3: Concurrencia
-- **Capacidad**: Mínimo 500 transacciones simultáneas
-- **Tecnología**: Pooling de conexiones, transacciones ACID
-- **Pruebas**: Simulaciones de carga con JMeter
-
-### RNF4: Seguridad
-- **Encriptación**: Contraseñas con BCrypt (factor 10)
-- **Tokens**: JWT firmados con HS256
-- **Protocolos**: HTTPS en producción
-- **Validación**: Jakarta Bean Validation en DTOs
-
----
-
-## 👥 Equipo de Desarrollo
-
-| Rol | Nombre | Responsabilidad |
-|-----|--------|-----------------|
-| **Product Owner** | Mag. Carlos Adolfo Beltrán Castro | Definición de requisitos y prioridades |
-| **Scrum Master** | Kevin Daniel Castro Mendoza | Facilitación y remoción de impedimentos |
-| **Developer Architecture** | Andrea Juliana Portilla Barrera | Diseño de arquitectura y patrones |
-| **Developer Coding** | Kevin Castro, Sebastián Mantilla, Andrea Portilla | Implementación backend |
-| **QA Member** | Juan Sebastián Mantilla Serrano | Pruebas y validación de calidad |
-
----
-
-## 🎓 Contexto Académico
-
-**Asignatura**: Entornos de Programación  
-**Semestre**: II - 2025  
-**Institución**: Universidad Industrial de Santander  
-**Escuela**: Ingeniería de Sistemas e Informática
-
----
-
-## 📄 Licencia
-
-Este proyecto está licenciado bajo la [MIT License](LICENSE).
-
----
-
-## 🔗 Enlaces Útiles
-
-- [Documentación Spring Boot](https://spring.io/projects/spring-boot)
-- [Spring Security Reference](https://docs.spring.io/spring-security/reference/index.html)
-- [JWT.io](https://jwt.io/) - Debugger de tokens
-- [Docker Documentation](https://docs.docker.com/)
-
----
-
-<div align="center">
-  <p><strong>Desarrollado con ❤️ por el Equipo LunchUIS</strong></p>
-  <p>Universidad Industrial de Santander - 2025</p>
-</div>
+## OBJETIVOS ESPECÍFICOS DEL PROYECTO
+- **Crear** un sistema de compra en línea que permita a los estudiantes adquirir el combo saludable de manera remota.
+- **Desarrollar** un sistema de validación de identidad que asegure la compra de un solo combo al día por cada estudiante.
+- **Establecer** un sistema de validación de combos al momento de la compra que garantice la adquisición de los combos únicamente si aún hay disponibles.
+- **Implementar** un sistema de restricción de franja horaria que asegure la compra del combo solo en los horarios establecidos.
+- **Generar** un sistema de reportes y estadísticas sobre datos de interés en este proceso.
+- **Incorporar** una funcionalidad de tokens u otro tipo de tecnología para el reclamo del pedido.
+- **Diseñar** una interfaz de usuario intuitiva y responsive que ofrezca una experiencia de usuario satisfactoria.
+- **Crear** una interfaz para los administradores que les permita ver los reportes y estadísticas de las ventas.
+- **Añadir** un módulo de notificaciones y recordatorios que envíe alertas a los estudiantes sobre sus combos.
+- **Aprender** sobre el uso de la metodología SCRUM en desarrollo de proyectos
