@@ -21,7 +21,7 @@ Sistema automatizado para la gestión y compra del "Combo Saludable" en la Unive
 
 ## 🚀 Tecnologías
 * **Frontend:** Angular (SPA, Componentes reactivos).
-* **Backend:** [Tu lenguaje aquí, ej: Java/Spring Boot, Node.js, Python].
+* **Backend:** [Java/Spring Boot].
 * **Base de Datos:** [PostgreSQL/MySQL].
 
 ## 🛠️ Módulos Principales (Funcionalidad)
